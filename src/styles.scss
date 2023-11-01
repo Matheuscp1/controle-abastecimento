@@ -37,3 +37,9 @@ $front-end-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.alert {
+  display: block;
+  font-size: 14px;
+  color: red;
+}
