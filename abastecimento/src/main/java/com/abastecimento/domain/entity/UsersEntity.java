@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +17,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Users {
+public class UsersEntity {
 
-	public Users(String userName, String password) {
+	public UsersEntity(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
 	}
@@ -27,6 +28,7 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	@Column(name = "user_name")
+	@NotNull
 	private String userName;
 	@Column
 	@JsonProperty(access = Access.WRITE_ONLY)
