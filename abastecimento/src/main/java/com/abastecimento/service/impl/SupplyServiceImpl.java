@@ -24,7 +24,7 @@ public class SupplyServiceImpl implements SupplyService {
 
 	@Override
 	public List<SupplyEntity> getAll() {
-		return repository.findAll();
+		return (List<SupplyEntity>) repository.findAll();
 	}
 
 	@Override

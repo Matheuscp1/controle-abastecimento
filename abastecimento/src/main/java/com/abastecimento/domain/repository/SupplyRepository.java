@@ -1,9 +1,12 @@
 package com.abastecimento.domain.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.abastecimento.domain.entity.SupplyEntity;
 
-public interface SupplyRepository extends JpaRepository<SupplyEntity, Long> {
+@Repository
+public interface SupplyRepository extends CrudRepository<SupplyEntity, Long> {
 
 }

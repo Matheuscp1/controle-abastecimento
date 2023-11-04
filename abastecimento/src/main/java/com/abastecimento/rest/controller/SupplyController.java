@@ -14,6 +14,8 @@ import com.abastecimento.domain.entity.UsersEntity;
 import com.abastecimento.rest.dto.SupplyDTO;
 import com.abastecimento.service.impl.SupplyServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/supply")
 public class SupplyController {
@@ -22,7 +24,7 @@ public class SupplyController {
 	SupplyServiceImpl service;
 	
 	@PostMapping
-	public SupplyEntity saveSuply(@RequestBody SupplyDTO supply ) {
+	public SupplyEntity saveSuply(@Valid @RequestBody SupplyDTO supply ) {
 		return service.save(supply);
 		
 	}
