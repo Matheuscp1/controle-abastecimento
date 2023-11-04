@@ -2,7 +2,6 @@ package com.abastecimento.rest.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 import com.abastecimento.domain.entity.SupplyEntity;
 
