@@ -1,0 +1,104 @@
+<mat-card>
+  <mat-card-title class="title">Novo Abastecimento</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="example-form">
+      <p>
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            matInput
+            placeholder="Placa do veículo"
+            formControlName="car"
+          />
+        </mat-form-field>
+        <span
+          class="alert"
+          *ngIf="form.get('car')?.errors && form.get('car')?.touched"
+          >Usuário obrigatória
+        </span>
+      </p>
+
+      <p>
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            matInput
+            placeholder="Quilometragem "
+            formControlName="km"
+          />
+        </mat-form-field>
+        <span
+          class="alert"
+          *ngIf="form.get('km')?.errors && form.get('km')?.touched"
+          >Quilometragem obrigatória
+        </span>
+      </p>
+
+      <p>
+        <mat-form-field class="example-full-width" (click)="picker.open()">
+          <mat-label>Data</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (click)="picker.open()"
+            formControlName="date"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <span
+          class="alert"
+          *ngIf="form.get('date')?.errors && form.get('date')?.touched"
+          >Data obrigatória
+        </span>
+      </p>
+
+      <p></p>
+      <p>
+        <mat-form-field class="example-full-width">
+          Horas
+          <input
+            type="time"
+            matInput
+            placeholder="Horas"
+            formControlName="hour"
+          />
+        </mat-form-field>
+        <span
+          class="alert"
+          *ngIf="form.get('hour')?.errors && form.get('hour')?.touched"
+          >Horas obrigatória
+        </span>
+      </p>
+
+      <p>
+        <mat-form-field class="example-full-width">
+          <input
+          currencyMask
+            type="text"
+            matInput
+            placeholder="Valor total do abastecimento "
+            formControlName="total"
+            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}"
+          />
+        </mat-form-field>
+        <span
+          class="alert"
+          *ngIf="form.get('total')?.errors && form.get('total')?.touched"
+          >Valor total obrigatória
+        </span>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

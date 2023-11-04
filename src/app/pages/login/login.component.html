@@ -7,24 +7,24 @@
             <mat-form-field>
               <input type="text" matInput placeholder="Usuário" formControlName="userName">
             </mat-form-field>
-            <span class="alert" *ngIf="form.get('userName')?.errors && (form.get('userName')?.touched )">Usuário obrigatoria </span>
+            <span class="alert" *ngIf="form.get('userName')?.errors && (form.get('userName')?.touched )">Usuário obrigatória </span>
           </p>
 
           <p>
             <mat-form-field>
               <input type="password" matInput placeholder="Senha" formControlName="password">
             </mat-form-field>
-            <span class="alert" *ngIf="form.get('password')?.errors && (form.get('password')?.touched )">Senha obrigatoria </span>
+            <span class="alert" *ngIf="form.get('password')?.errors && (form.get('password')?.touched )">Senha obrigatória </span>
           </p>
-  
+
           <p *ngIf="error" class="error">
             {{ error }}
           </p>
-  
+
           <div class="button">
             <button type="submit" mat-raised-button color="primary">Login</button>
           </div>
-  
+
         </form>
       </mat-card-content>
     </mat-card>

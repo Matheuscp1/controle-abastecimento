@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,16 +15,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { MatDividerModule,MatDivider } from '@angular/material/divider';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
+import { TableComponent } from './components/table/table.component';
+import { FormSupplyComponent } from './components/form-supply/form-supply.component';
+import { NgxCurrencyDirective } from 'ngx-currency';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TableComponent,
+    FormSupplyComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +53,11 @@ import { HomeComponent } from './pages/home/home.component';
     MatIconModule,
     MatSidenavModule,
     MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxCurrencyDirective,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

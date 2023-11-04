@@ -1,33 +1,33 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()"
-    >
-      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Sistema de Controle de Abastecimento
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <button mat-button class="menu-button" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page" routerLink="/home">
+      <mat-icon aria-hidden="false" aria-label="" fontIcon="home"></mat-icon>
+      <span>Home</span>
     </button>
-    Sistema de Controle de Abastecimento
-  </mat-toolbar>
-  
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-      <button mat-button class="menu-button" routerLink="">
-        <mat-icon aria-hidden="false"  aria-label="" fontIcon="home"></mat-icon>
-        <span>Home</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="">
-        <mat-icon aria-hidden="false"  aria-label="" fontIcon="home"></mat-icon>
-        <span >home</span>
-      </button>
-      <button mat-button class="menu-button" routerLink="">
-        <mat-icon aria-hidden="false"  aria-label="" fontIcon="home"></mat-icon>
-        <span>About</span>
-      </button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content mat-elevation-z8">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+    <button mat-button class="menu-button"  routerLinkActive="active" routerLink="novo-abastecimento">
+      <mat-icon aria-hidden="false" aria-label="" fontIcon="add"></mat-icon>
+      <span>Novo  Abastecimento</span>
+    </button>
+    <button mat-button class="menu-button"  ariaCurrentWhenActive="page" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/f">
+      <mat-icon aria-hidden="false" aria-label="" fontIcon="logout"></mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <main><router-outlet></router-outlet></main>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
