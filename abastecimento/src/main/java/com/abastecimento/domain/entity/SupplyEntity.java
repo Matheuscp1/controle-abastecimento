@@ -2,6 +2,9 @@ package com.abastecimento.domain.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.abastecimento.rest.dto.SupplyDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +29,7 @@ public class SupplyEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 	@Column(name = "plate",nullable = false)
 	@NotEmpty(message = "Placa é obrigatório")
 	private String plate;
@@ -45,7 +48,13 @@ public class SupplyEntity {
 	
 	
 	@Column(name = "total", nullable = false)
-	@DecimalMin(value = "1", message = "Total deve ser maior que 0")
+	@DecimalMin(value = "0.00", message = "Total deve ser maior que 0.00")
 	private BigDecimal  total;
+
+
+	public  SupplyDTO toDTO() {
+		SupplyDTO supply = new SupplyDTO(this.id, this.plate, this.mileage, this.date, this.hour, this.total);
+		return supply;
+	}
 
 }

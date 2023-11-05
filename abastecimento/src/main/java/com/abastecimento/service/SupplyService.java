@@ -9,7 +9,8 @@ import com.abastecimento.rest.dto.SupplyDTO;
 public interface SupplyService {
 
 	public SupplyEntity save(SupplyDTO supply);
-	public List<SupplyEntity> getAll();
-	public SupplyDTO getById(BigDecimal id);
-	public void delete(SupplyDTO supply);
+	public SupplyEntity update(SupplyDTO supply);
+	public List<SupplyDTO> getAll();
+	public SupplyDTO getById(Long id);
+	public void delete(Long id);
 }
