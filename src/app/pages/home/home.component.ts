@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -12,7 +13,11 @@ export class HomeComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(private observer: BreakpointObserver, private router: Router, private service: AuthService) {}
+
+  logout(){
+    this.service.logout(this.router)
+  }
 
   ngAfterViewInit() {
     this.observer

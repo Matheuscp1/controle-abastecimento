@@ -16,8 +16,8 @@ export class SupplyService {
     return this.httpClient.post<Response>(`${this.urlApi}/supply`, supply.value);
   }
 
-  public getAll(): Observable<any> {
-    return this.httpClient.get<Response>(`${this.urlApi}/supply`);
+  public getAll(size:number,page:number): Observable<any> {
+    return this.httpClient.get<Response>(`${this.urlApi}/supply?page=${page}&size=${size}`);
   }
 
   public getById(id:string): Observable<any> {

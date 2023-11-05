@@ -27,6 +27,10 @@ import { NgxCurrencyDirective } from 'ngx-currency';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { OnlyNumberDirective } from './directives/only-numbers.directive';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator'
+import { MatDialogModule} from '@angular/material/dialog';;
+import { CustomPaginator } from 'src/utils/customPaginator';
+import { ModalComponent } from './components/modal/modal.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -37,6 +41,7 @@ registerLocaleData(localePt);
     TableComponent,
     FormSupplyComponent,
     OnlyNumberDirective,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,8 +67,13 @@ registerLocaleData(localePt);
     MatDatepickerModule,
     MatNativeDateModule,
     NgxCurrencyDirective,
+    MatPaginatorModule,
+    MatDialogModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }, {
+    provide: MatPaginatorIntl,
+    useValue: CustomPaginator(),
+  },],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

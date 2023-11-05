@@ -21,7 +21,7 @@ export class FormSupplyComponent {
       mileage: ['', [Validators.required]],
       date: ['', [Validators.required]],
       hour: ['', [Validators.required]],
-      total: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{2})?$/)]],
+      total: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{2})?$/), Validators.min(0.01)]],
     });
   }
   id = this.activatedRouter.snapshot.params['id']
@@ -78,7 +78,9 @@ export class FormSupplyComponent {
           next: (value) => {
             this.router.navigateByUrl("/home")
           },
-          error: (error) => {},
+          error: (error) => {
+            this.error = error.error.errors[0]
+          },
         });
       }
     }

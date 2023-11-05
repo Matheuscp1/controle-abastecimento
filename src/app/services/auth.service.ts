@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { getLocalStorage, setLocalStorage } from '../../utils/localStorage';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 const KEY_USER = 'user';
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class AuthService {
 
   public login(login: FormGroup): Observable<any> {
     return this.httpClient.post<Response>(`${this.urlApi}/users`, login.value);
+  }
+
+  public logout(router: Router){
+    localStorage.clear();
+    router.navigateByUrl('/');
   }
 
   public isSignin(){

@@ -5,6 +5,7 @@
       <p>
         <mat-form-field class="full-width">
           <input
+            required
             maxlength="10"
             type="text"
             matInput
@@ -16,14 +17,14 @@
         <span
           class="alert"
           *ngIf="form.get('plate')?.errors && form.get('plate')?.touched"
-          >Usuário obrigatória
+          >Placa obrigatório
         </span>
       </p>
 
       <p>
         <mat-form-field class="full-width">
           <input
-          maxlength="15"
+            maxlength="15"
             type="text"
             matInput
             placeholder="Quilometragem"
@@ -34,7 +35,7 @@
         <span
           class="alert"
           *ngIf="form.get('mileage')?.errors && form.get('mileage')?.touched"
-          >Quilometragem obrigatória
+          >Quilometragem obrigatório
         </span>
       </p>
 
@@ -56,7 +57,7 @@
         <span
           class="alert"
           *ngIf="form.get('date')?.errors && form.get('date')?.touched"
-          >Data obrigatória
+          >Data obrigatório
         </span>
       </p>
 
@@ -74,20 +75,25 @@
         <span
           class="alert"
           *ngIf="form.get('hour')?.errors && form.get('hour')?.touched"
-          >Horas obrigatória
+          >Horas obrigatório
         </span>
       </p>
 
       <p>
         <mat-form-field class="full-width">
           <input
-          maxlength="15"
-          currencyMask
+            maxlength="15"
+            currencyMask
             type="text"
             matInput
             placeholder="Valor total do abastecimento "
             formControlName="total"
-            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left'}"
+            [options]="{
+              prefix: 'R$ ',
+              thousands: '.',
+              decimal: ',',
+              align: 'left'
+            }"
           />
         </mat-form-field>
         <span
@@ -97,7 +103,7 @@
         </span>
       </p>
 
-      <p *ngIf="error" class="error">
+      <p *ngIf="error" class="alert">
         {{ error }}
       </p>
 
