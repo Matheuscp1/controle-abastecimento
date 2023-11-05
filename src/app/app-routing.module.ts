@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'novo-abastecimento',
         component: FormSupplyComponent,
       },
+      {
+        path: 'editar-abastecimento/:id',
+        component: FormSupplyComponent,
+      },
     ],
   },
   { path: '**', redirectTo: '' },

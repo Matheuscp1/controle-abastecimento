@@ -19,4 +19,17 @@ export class SupplyService {
   public getAll(): Observable<any> {
     return this.httpClient.get<Response>(`${this.urlApi}/supply`);
   }
+
+  public getById(id:string): Observable<any> {
+    return this.httpClient.get<Response>(`${this.urlApi}/supply/${id}`,);
+  }
+
+  public update(supply: any): Observable<any> {
+    return this.httpClient.put<Response>(`${this.urlApi}/supply`, supply);
+  }
+
+
+  public delete(id:string): Observable<any> {
+    return this.httpClient.delete<Response>(`${this.urlApi}/supply/${id}`, );
+  }
 }
