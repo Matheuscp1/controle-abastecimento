@@ -24,6 +24,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { TableComponent } from './components/table/table.component';
 import { FormSupplyComponent } from './components/form-supply/form-supply.component';
 import { NgxCurrencyDirective } from 'ngx-currency';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { OnlyNumberDirective } from './directives/only-numbers.directive';
+
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +36,7 @@ import { NgxCurrencyDirective } from 'ngx-currency';
     HomeComponent,
     TableComponent,
     FormSupplyComponent,
+    OnlyNumberDirective,
   ],
   imports: [
     BrowserModule,

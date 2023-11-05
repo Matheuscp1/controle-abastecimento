@@ -8,12 +8,12 @@
             type="text"
             matInput
             placeholder="Placa do veículo"
-            formControlName="car"
+            formControlName="plate"
           />
         </mat-form-field>
         <span
           class="alert"
-          *ngIf="form.get('car')?.errors && form.get('car')?.touched"
+          *ngIf="form.get('plate')?.errors && form.get('plate')?.touched"
           >Usuário obrigatória
         </span>
       </p>
@@ -24,12 +24,13 @@
             type="text"
             matInput
             placeholder="Quilometragem "
-            formControlName="km"
+            formControlName="mileage"
+            onlyNumber
           />
         </mat-form-field>
         <span
           class="alert"
-          *ngIf="form.get('km')?.errors && form.get('km')?.touched"
+          *ngIf="form.get('mileage')?.errors && form.get('mileage')?.touched"
           >Quilometragem obrigatória
         </span>
       </p>
@@ -97,7 +98,7 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <button type="submit" mat-raised-button color="primary">Salvar</button>
       </div>
     </form>
   </mat-card-content>
