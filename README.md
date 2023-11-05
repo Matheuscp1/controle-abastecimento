@@ -1,27 +1,53 @@
-# FrontEnd
+## Funcionalidades e arquivos de configuração para o back-end
+Esse projeto já possui algumas bibliotecas e funcionalidades prontas, como as seguintes:
+* [x] Spring-boot-JPA
+* [x] Spring Boot
+* [x] H2
+* [x] Spring-boot-starter-validation
+* [x] Hibernate
+* [x] Lombok
+* [x] Paginação
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
 
-## Development server
+##  Configurações
+# Altere o arquivo  application.properties para as configuraçãos do banco de dados h2 e porta da API caso  precise
+# Api esta rondando na porta 8080
+# o back end se encontra na pasta abastecimento
+## Rode aplicação em qualquer IDE
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Versão do NodeJs
+Esse projeto utiliza NodeJS v20.9.0 para o front end
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Funcionalidades, comandos e arquivos de configuração para o front-end
+Esse projeto já possui algumas bibliotecas e funcionalidades prontas, como as seguintes:
+* [x] Angular V16 
+* [x] ESLint (Ferramenta para manter o código padronizado e evitar erros)
+* [x] Git Commit Linter (Verifica todo commit realizado se ele segue as convenções de nomenclatura do GIT)
+* [x] Angular Material
+* [x] Responsabilidade 
 
-## Build
+## Configurações
+# Altere as varivéis Angular para url do servidor da api para o consumo no arquivo environment.development.ts
+# aplição front-end esta rondando na porta 4200
+# faço login com o usuário admin e senha 123
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Comandos
+Para baixar as depêndencias do projeto de desenvolvimento, certifique-se de estar utilizando a versão correta do NodeJS e execute o seguinte comando:
 
-## Running unit tests
+```
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para executar o projeto:
+```
+npm start
+```
+![tabela](https://github.com/Matheuscp1/controle-abastecimento/assets/57846548/82a455e9-bf70-4d6a-bb27-dafe51a09de2).
 
-## Running end-to-end tests
+![novo](https://github.com/Matheuscp1/controle-abastecimento/assets/57846548/fdbdc188-deff-472c-bd2a-410a7caacdb3)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+![responsivo](https://github.com/Matheuscp1/controle-abastecimento/assets/57846548/a8bcea67-83e3-40f2-9051-a97219c708bb)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
