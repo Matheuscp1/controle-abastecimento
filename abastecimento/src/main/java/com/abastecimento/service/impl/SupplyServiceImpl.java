@@ -12,6 +12,8 @@ import com.abastecimento.expection.ValidateSupplyMileageExpection;
 import com.abastecimento.rest.dto.SupplyDTO;
 import com.abastecimento.service.SupplyService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class SupplyServiceImpl implements SupplyService {
 
@@ -19,6 +21,7 @@ public class SupplyServiceImpl implements SupplyService {
 	private SupplyRepository repository;
 
 	@Override
+	@Transactional
 	public SupplyEntity save(SupplyDTO supply) {
 		return repository.save(supply.dtoToEntity());
 	}
@@ -41,6 +44,7 @@ public class SupplyServiceImpl implements SupplyService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Long id) {
 		SupplyEntity supplyFind = repository.findById(id)
 				.orElseThrow(() -> new NotFoundException("Abastecimento não encontrado"));
@@ -48,6 +52,7 @@ public class SupplyServiceImpl implements SupplyService {
 	}
 
 	@Override
+	@Transactional
 	public SupplyEntity update(SupplyDTO supply) {
 		SupplyEntity supplyFind = repository.findById(supply.getId())
 				.orElseThrow(() -> new NotFoundException("Abastecimento não encontrado"));
@@ -57,8 +62,9 @@ public class SupplyServiceImpl implements SupplyService {
 
 	@Override
 	public void validateSupply(SupplyDTO supply) {
-		SupplyEntity supplyFind = repository.findByPlateAndDateAndHourAndMileageGreaterThanEqual(supply.getPlate(),
+		SupplyEntity supplyFind = repository.findFirstByPlateAndDateAndHourAndMileageGreaterThanEqual(supply.getPlate(),
 				supply.getDate(), supply.getHour(), supply.getMileage());
+		System.out.println(supplyFind);
 		if (supplyFind != null) {
 			throw new ValidateSupplyMileageExpection("Quilometragem deve ser maior para está data, placa e hora");
 		}

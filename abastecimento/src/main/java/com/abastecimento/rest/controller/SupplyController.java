@@ -22,43 +22,39 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping(value = "/supply")
 public class SupplyController {
-	
+
 	@Autowired
 	SupplyServiceImpl service;
-	
-	
+
 	@Autowired
 	SupplyRepository rep;
-	
+
 	@PostMapping
-	public SupplyEntity saveSupply(@Valid @RequestBody SupplyDTO supply ) {
-		service.validateSupply(supply);
-		return service.save(supply);
-		
+	public SupplyEntity saveSupply(@Valid @RequestBody SupplyEntity supply) {
+		service.validateSupply(supply.toDTO());
+		return service.save(supply.toDTO());
 	}
-	
+
 	@GetMapping
-	public Page<SupplyDTO> getAll(Pageable pageable ) {
+	public Page<SupplyDTO> getAll(Pageable pageable) {
 		return service.getAll(pageable);
-		
+
 	}
-	
+
 	@GetMapping(value = "{id}")
 	public SupplyDTO getByID(@PathVariable Long id) {
 		return service.getById(id);
-		
-	}
-	
-	@PutMapping()
-	public SupplyEntity update(@Valid @RequestBody SupplyDTO supply) {
-		return service.update(supply);
-	}
-	
 
+	}
+
+	@PutMapping()
+	public SupplyEntity update(@Valid @RequestBody SupplyEntity supply) {
+		return service.update(supply.toDTO());
+	}
 
 	@DeleteMapping(value = "{id}")
 	public void delete(@PathVariable Long id) {
 		service.delete(id);
-		
+
 	}
 }

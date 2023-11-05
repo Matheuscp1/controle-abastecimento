@@ -14,7 +14,7 @@ public class SupplyDTO {
 	public Long id;
 	public String plate;
 	
-	public String mileage;
+	public Long mileage;
 	
 	public LocalDate date;
 	

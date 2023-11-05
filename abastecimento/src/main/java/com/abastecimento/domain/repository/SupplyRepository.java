@@ -9,5 +9,5 @@ import com.abastecimento.domain.entity.SupplyEntity;
 @Repository
 public interface SupplyRepository extends JpaRepository<SupplyEntity, Long> {
 
-		public SupplyEntity findByPlateAndDateAndHourAndMileageGreaterThanEqual(String plate, LocalDate date,String hour, String mileage);
+		public SupplyEntity findFirstByPlateAndDateAndHourAndMileageGreaterThanEqual(String plate, LocalDate date,String hour, Long mileage);
 }
