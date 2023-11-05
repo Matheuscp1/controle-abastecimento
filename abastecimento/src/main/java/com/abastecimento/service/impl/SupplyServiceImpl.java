@@ -1,16 +1,14 @@
 package com.abastecimento.service.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.abastecimento.domain.entity.SupplyEntity;
 import com.abastecimento.domain.repository.SupplyRepository;
 import com.abastecimento.expection.NotFoundException;
+import com.abastecimento.expection.ValidateSupplyMileageExpection;
 import com.abastecimento.rest.dto.SupplyDTO;
 import com.abastecimento.service.SupplyService;
 
@@ -26,11 +24,12 @@ public class SupplyServiceImpl implements SupplyService {
 	}
 
 	@Override
-	public List<SupplyDTO> getAll() {
-		List<SupplyEntity> supplys = repository.findAll();
-		List<SupplyDTO> supplyDTO = supplys.stream().map(
-				s -> new SupplyDTO(s.getId(), s.getPlate(), s.getMileage(), s.getDate(), s.getHour(), s.getTotal()))
-				.collect(Collectors.toList());
+	public Page<SupplyDTO> getAll(Pageable pageable) {
+		Page<SupplyEntity> supplys = repository.findAll(pageable);
+		System.out.println(supplys);
+		Page<SupplyDTO> supplyDTO = supplys.map(
+				s -> new SupplyDTO(s.getId(), s.getPlate(), s.getMileage(), s.getDate(), s.getHour(), s.getTotal())
+				);
 		return supplyDTO;
 	}
 
@@ -54,6 +53,15 @@ public class SupplyServiceImpl implements SupplyService {
 				.orElseThrow(() -> new NotFoundException("Abastecimento não encontrado"));
 		supplyFind = supply.dtoToEntity();
 		return repository.save(supplyFind);
+	}
+
+	@Override
+	public void validateSupply(SupplyDTO supply) {
+		SupplyEntity supplyFind = repository.findByPlateAndDateAndHourAndMileageGreaterThanEqual(supply.getPlate(),
+				supply.getDate(), supply.getHour(), supply.getMileage());
+		if (supplyFind != null) {
+			throw new ValidateSupplyMileageExpection("Quilometragem deve ser maior para está data, placa e hora");
+		}
 	}
 
 }

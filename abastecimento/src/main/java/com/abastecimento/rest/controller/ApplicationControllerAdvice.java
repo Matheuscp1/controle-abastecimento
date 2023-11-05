@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.abastecimento.expection.NotFoundException;
+import com.abastecimento.expection.ValidateSupplyMileageExpection;
 import com.abastecimento.rest.ApiErrors;
 
 @RestControllerAdvice
@@ -24,7 +25,14 @@ public class ApplicationControllerAdvice {
 	    public ApiErrors handleInvalidDataAccessResourceUsageException( InvalidDataAccessResourceUsageException ex ){
 	        return new ApiErrors(ex.getMessage());
 	    }
+	    
+	    @ExceptionHandler(ValidateSupplyMileageExpection.class)
+	    @ResponseStatus(HttpStatus.BAD_REQUEST)
+	    public ApiErrors handleValidateSupplyMileageExpection( ValidateSupplyMileageExpection ex ){
+	        return new ApiErrors(ex.getMessage());
+	    }
 	
+	    
 	    @ExceptionHandler(MethodArgumentNotValidException.class)
 	    @ResponseStatus(HttpStatus.BAD_REQUEST)
 	    public ApiErrors handleMethodNotValidException( MethodArgumentNotValidException ex ){

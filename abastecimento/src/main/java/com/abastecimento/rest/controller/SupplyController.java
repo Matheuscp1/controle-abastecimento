@@ -1,8 +1,8 @@
 package com.abastecimento.rest.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abastecimento.domain.entity.SupplyEntity;
-import com.abastecimento.domain.entity.UsersEntity;
 import com.abastecimento.domain.repository.SupplyRepository;
 import com.abastecimento.rest.dto.SupplyDTO;
 import com.abastecimento.service.impl.SupplyServiceImpl;
@@ -33,14 +31,15 @@ public class SupplyController {
 	SupplyRepository rep;
 	
 	@PostMapping
-	public SupplyEntity saveSuply(@Valid @RequestBody SupplyDTO supply ) {
+	public SupplyEntity saveSupply(@Valid @RequestBody SupplyDTO supply ) {
+		service.validateSupply(supply);
 		return service.save(supply);
 		
 	}
 	
 	@GetMapping
-	public List<SupplyDTO> getAll() {
-		return service.getAll();
+	public Page<SupplyDTO> getAll(Pageable pageable ) {
+		return service.getAll(pageable);
 		
 	}
 	
