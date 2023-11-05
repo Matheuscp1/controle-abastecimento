@@ -23,7 +23,7 @@ public class DemoApplication {
 		
 		UsersEntity user = new UsersEntity( "admin", "123");
 		userRepository.save(user);
-		SupplyEntity supplyEntity = new SupplyEntity(1L, "ABCDEFG-102", 510L, LocalDate.now(), "10:30",  new BigDecimal("500.50"));
+		SupplyEntity supplyEntity = new SupplyEntity(1L, "ABCDEF-20", 510L, LocalDate.now(), "10:30",  new BigDecimal("441.42"));
 		supplyRepository.save(supplyEntity);
 	}
 
